@@ -1,0 +1,35 @@
+1. What is Shell?
+
+    A Shell is basically a command-line interpreter between user and kernel or a complete environment specially designed to run commands, 
+    shell scripts, and programs. In this, whenever a user enters human-readable commands (input commands) through the keyboard, 
+    the shell communicates with the kernel to execute these commands, and display output in a shell script.
+
+2. Why is a shell script needed?
+
+    -> Keeping repetitive tasks to a minimum.
+    -> Can be used by system administrators for routine backups.
+    -> Monitoring the system.
+    -> Adding new functions to the shell.
+    -> Shell scripting allows you to create your own tools.
+    -> System admin can automate daily tasks
+
+3. Write some advantages of shell scripting.
+
+    -> Shell scripts are easy to use and quicker to write.
+    -> An interactive debugging tool, as well as a quick start.
+    -> As shell scripts are written in an interpreted language, they can be run without any additional effort on almost any 
+       modern operating system, including UNIX, Linux, BSD, and Mac OS X.
+    -> Programmers need not change their syntax since both command and syntax are identical to those entered directly into the command line.
+    -> It helps automate administrative tasks, so it is time-saving.  
+
+4. Write some limitations of shell scripting.
+
+    -> Errors are frequent and costly, and a single error can alter the command. 
+    -> Large, complex tasks aren't well suited to it. 
+    -> Every time a shell command is executed, a new process is launched.
+    -> Bugs or inadequacies in the language's syntax or implementation. 
+
+5. Name the file in which shell programs are stored.
+
+    A file called sh stores shell programs. Sh files contain commands written in a scripting language 
+    that is run by Unix shells.
