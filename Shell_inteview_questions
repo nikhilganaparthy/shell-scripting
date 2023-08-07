@@ -33,3 +33,50 @@
 
     A file called sh stores shell programs. Sh files contain commands written in a scripting language 
     that is run by Unix shells.
+
+6. Name different types of shells available.
+
+    -->Shells are divided into two categories: 
+        Bourne shell: The $ character is the default prompt when using a Bourne-type shell.
+        C shell: The % character is the default prompt when using a C-type shell.
+    -The Bourne-type is subdivided into the following categories:
+        -> BASH
+        -> KORN 
+    -The C-type is subdivided into the following categories:   
+        -> C-shell
+        -> TOPS/TENEX shell
+
+7. Write difference between Bourne Shell and C Shell.
+
+        -Bourne Shell: It has compactness and speed that set it apart from other shells. But it lacks interactive features such
+             as the ability to recall previous commands. Additionally, the Bourne shell does not support arithmetic and logical expressions.
+        -C Shell: It is a UNIX enhancement that incorporates interactive features like aliases and history of commands. 
+             Besides its built-in arithmetic and expression syntax, it also includes convenient programming features.
+    Difference between Bourne shell and C shell  
+
+        ->The C shell allows you to alias commands easily, whereas Bourne Shell does not allow this.
+        ->In the C shell, long commands can be used repeatedly, but not in Bourne.
+        ->Bourne does not have access to the command history, but the C shell does.
+        ->In the case of C, there is no need to repeatedly type the command.
+
+8. What do you mean by Shell variable?
+
+    variables usually store data either in the form of characters or numbers. Shell also stores and manipulates 
+    information using variables in its programs. Generally, shell variables are stored as strings. Variables in the shell 
+    provide the information needed for scripts/commands to execute.
+
+9. What are different types of variables mostly used in shell scripting?
+
+    -System-defined variables: Also called environment variables, these are special built-in variables in the Linux kernel for each shell. 
+                               They are normally defined in capital letters by the OS (Linux) and are standard variables.
+    -User-defined variables: These variables are created and defined by users in order to store, access, read, and manipulate data. 
+                              In general, they are defined in lowercase letters. The Echo command allows you to view them.
+
+10. Explain the term positional parameters.
+
+        A positional parameter is a variable within a shell program; its value is set from an argument specified
+        on the command line that invokes the program. Positional parameters are numbered and are referred to with
+        a preceding ``$'': $1, $2, $3, and so on. A shell program may reference up to 9 positional parameters.
+
+
+
