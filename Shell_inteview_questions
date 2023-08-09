@@ -78,5 +78,185 @@
         on the command line that invokes the program. Positional parameters are numbered and are referred to with
         a preceding ``$'': $1, $2, $3, and so on. A shell program may reference up to 9 positional parameters.
 
+11. What are control instructions?
+
+    Control instructions specify how the different instructions will be executed in the script. They are primarily used to determine
+    the control flow in Shell programs. The execution of a shell script proceeds in succession without these instructions. 
+    In shell programs, control instructions govern how execution flows.
+
+12. How many types of control instructions are available in a shell?
+
+    Shells provide four types of control instructions as given below:
+
+       -> Sequence Control Instruction: This assures that a program's command runs in the sequence they are listed.
+        As soon as the first command in the sequence has been completed, the second command follows, and so on.
+
+       -> Decision Control Instruction: It is also known as Selection Control Instruction. This instructs the computer which 
+        instruction it should execute next. In this, checking a condition is the basis for deciding which section to execute. 
+        If a given condition is True, a statement or set of statements will be executed; otherwise, they will be ignored.
+
+       -> Loop Control Instruction: It is also known as Repetition Instruction. This instruction allows a computer to continuously 
+        run a particular sequence of code. In a loop structure, the statements can be repeated until a condition is True or False,
+        a particular number of times, or once for each element within the collection
+
+       -> Case-Control Instruction: This is used for selecting among several choices. Typically, they are used to execute only 
+        a particular block of statements within a series of statements.
+
+13.  Explain ways to create shortcuts in Linux.
+
+    Links present in Linux OS can be used to create shortcuts as given below: 
+
+       -> Hard Link: Hard links are mirror images of the originally linked files and are linked with an inode number. 
+    A hard-linked file remains even after the original file is deleted. Since hard links point to inodes, they cannot be 
+    implemented on directories. Hard links are created by the following command:
+                    $ ln  [original filename] [link name]
+
+       -> Soft Link: Generally, soft links (also referred to as Symbolic links) are linked to the file name and can reside on the 
+    same as well as different file systems. When a soft link is created or deleted, it does not affect the original file, 
+    but when the original file is deleted, the soft link stops working. Typically, soft links are aliases (alternative paths) 
+    for the original file. Soft links are created by the following command:    
+                    $ ln  -s [original filename] [link name]
+
+14. How to check whether a link is a hard one or a soft link?
+
+    We can use -h and -L operators of the test command to check whether a link is hard or soft (symbolic link).
+
+        -h file      //true if the file is a symbolic link
+        -L file      //true if the file is a symbolic link
+    One can also use:
+    readlink FILE; echo $?       // This returns 1 if it's a hard link and 0 if it's a symbolic link
+
+15. Write difference between Hard link and Soft Link.
+
+    Hard Link:
+        - Hard-linked files have the same inode number.
+        - Despite deleting the target file, it remains valid.
+        - Hard links are faster than soft links. 
+        - There is no way to use it across file systems. 
+        - Hard links cannot use relative paths. 
+    Soft Link:
+        - Soft-linked files have different inode numbers.
+        - When an original file is deleted, it becomes invalid.
+        - Soft links are slower than hard links.
+        - You can use it on any file system.
+        - Both absolute and relative paths can be used in soft links. 
+
+16. What do you mean by GUI Scripting?
+
+        The GUI (Graphical User Interface) is a client/server interface that uses graphical icons and visual indicators to 
+        allow users to interact with devices. Specifically, it is used to control a computer and its applications. 
+        A wide variety of applications are supported, and it is largely dependent on the operating system.
+
+17. What is the shebang line in shell scripting?
+
+    Shell scripts or programs often contain shebang at the top. In general, the Shebang (the series of characters "#!") 
+    is used to indicate the operating system to use a particular interpreter to process the rest of the file. 
+    Here, the symbol '#' is referred to as hash, and "!" is referred to as bang. This usually aids developers in avoiding
+    repetitive work. Scripts are generally executed by the engine; therefore, shebang determines the location of the engine 
+    that will be used to run the script.
+
+18. What is a file system? Write down the four core components of a Linux file system.
+
+    Generally, file systems are referred to as the collections of files, which include information related to those files. 
+    It would be impossible to tell where one piece of data stops and the next begins without a file system. There are four blocks 
+    in a file system: 
+
+    ->  Super Block: A superblock contains information about a file system, including block size, group size, usage statistics, 
+        empty/filled blocks, inode table size & location, and so on. One of the tools used to describe a file system, along with inodes,
+        entries, and files, is the superblock. Multiple superblocks are created with the file system, as the superblock contains 
+        critical information.
+    ->  Boot Block: Located on the disk label, a boot block is a special set of blocks that contains data or information on the disk 
+        layout. Normally, this block contains the bootstrap loader program, which a user runs upon launching the host computer. 
+        The boot block remains blank if the file system is not used for boot.
+    ->  Data Block: Also called storage blocks, data blocks contain the remainder of the space allocated to the file system.
+        The data block's size is measured at the time of file system creation. For a regular file, the content of files is contained 
+        in the data blocks. For directories, the inode number and file name of the files are contained in the data blocks. 
+    ->  Inode: Inodes contain information about each file in the filesystem. Normally, an inode doesn't contain a file's name, 
+        which is located in a directory instead.  An inode contains information such as the type of file, the permission bits, 
+        the owner, the group, the file size, and the time when the file was modified.
+
+19. Explain the way you can connect to a database server.
+
+    Open client driver comes with the isql utility that can be used to connect to a database server from Linux. Here's how to do it:
+        isql –S serverName –U username –P password
+
+20. What is the importance of $#?
+
+    $# usually holds the number of arguments, although it may be different for functions. To put it simply, 
+    it was used to store the number of command-line arguments passed to a shell script.
+
+21. Name the command that can be used to find out the number of arguments passed to the script?
+
+        echo $ #
+
+22. How long does a variable in a shell script last?
+
+    Variables inside shell scripts have a lifespan of only as long as the execution lasts.
+
+23. What does the . (dot) indicate at the beginning of the file name? How can it be listed?
+
+    If the file name begins with ".", it is a hidden file. When a dot appears at the beginning of a filename, 
+    the file is hidden in most file managers and shell programs. A Shell usually lists all the files except hidden files 
+    when you try to list the files in a shell. Despite this, hidden files can be found in the directory. 
+    The Is command must be run with the "–a" flag if you wish to see hidden files.
+
+24. What is the use of the "$?" command?
+
+    By using the command "$?", you can find out the status of the last command executed.
+
+25. What do you mean by crontab?
+
+    Crontab stands for "cron table," meaning that it makes use of the cron scheduler to perform tasks.
+    In other words, it is the list of commands that you wish to run on a regular schedule and the command that will let you manage it. 
+    It is possible to view or edit the table of commands using the crontab command. In addition to the schedule, the term "Crontab" also 
+    refers to the name of the program used to edit the schedule.
+
+26. Name two files of crontab command.
+
+    cron.deny and cron.allow are two files in the /etc/cron.d directory that controls access to the crontab command. 
+    Crontab command tasks such as creating, editing, displaying, or removing crontab files are relegated to specific 
+    users through these files. Both files usually consist of a list of user names, one user name per line. 
+    Together, these access control files perform the following functions:
+
+       -> cron.allow decides which users are allowed to run the crontab command.
+       -> cron.deny decides which users are denied from using the crontab command.
+       -> When cron.allow or cron.deny doesn't exist, superuser privileges are required to run it.
+
+27. Write the difference between $* and $@
+
+    Unlike $@, where each quoted argument is treated as a separate argument, 
+    $* treats each positional parameter as a single argument.
+
+                $*    ->	$1 $2 $3 … ${N}
+                $@	  ->     $1 $2 $3 … ${N}
+                "$*"  -> 	"$1c$2c$3c…c${N}"
+                "$@"  -> 	"$1" "$2" "$3" … "${N}"
+
+        eg: $ set -- "arg  1" "arg  2" "arg  3"
+
+                $ for word in "$*"; do echo "$word"; done   
+                        arg  1 arg  2 arg  3
+
+                $ for word in "$@"; do echo "$word"; done    
+                        arg  1
+                        arg  2
+                        arg  3
+
+28. Name the command that is used to compare the strings in a shell script.
+
+    To compare text strings, use the test command. By comparing each character in each string, the test command usually 
+    compares text strings.  In most cases, tests are generally included as a conditional execution of shell commands.
+    they can be used for Comparison of file attributes, Comparison of strings, Comparing basic arithmetic operations.
+
+    test EXPRESSION
+    test EXPRESSION && true-command
+    test EXPRESSION || false-command
+    test EXPRESSION && true-command || false-command
+
+29. 
+
+
+        
+
 
 
