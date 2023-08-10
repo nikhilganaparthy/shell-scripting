@@ -253,7 +253,85 @@
     test EXPRESSION || false-command
     test EXPRESSION && true-command || false-command
 
-29. 
+29. What do you mean by the “s” permission bit in a file?
+
+    The SUID (Set User ID) bit is known as the "s" bit. SUIDS are special file permissions for executable files that 
+    enable other users to run the file as the file owner. There will be an s (to indicate SUID) special permission for 
+    the user instead of the normal x, which represents execute permissions. A file that has the "s" bit set will grant 
+    the process the rights of the file's owner while the program is running.
+
+    eg: Executing the "passwd" command to change the password, for example, allows the user to write the new password to 
+    the shadow file even though its owner is "root.
+
+30. How will you debug a shell script?
+
+    With set, you can turn on or off debugging options in the shell:
+    -> Set -x: This displays commands and their arguments as they are being executed.
+    -> Set -v: It displays shell input lines in real-time as they are read
+
+31. What is the importance of sed command and awk command?
+
+    sed Command: sed command is an acronym for stream editor. It is used for editing a file without using an editor. 
+    The SED command performs a variety of operations on files, such as searching, finding and replacing, inserting and deleting. 
+    However, substitution or find and replace are the most commonly used features of SED.
+        -> /u/user1/Shell_Scripts_2020> echo "Hi Gourav" | sed 's/Hi/Hello/'
+
+    awk Command: The command is a scripting language generally used to manipulate data and generate reports. 
+    There is no need to compile it and users are allowed to have access to a variable, string functions, numeric functions, 
+    and logical operations.
+        -> $0 -> For whole line (e.g. Hello Aisha)  
+           $1 -> For the first field i.e. Hello  
+           $2 -> For the second field
+
+32. Write the difference between “=” and “==”.
+
+    = operator: Assigning the value into a variable is accomplished by using the = operator. It is referred to as the 
+      assignment operator.
+    == operator: This is used to compare strings. In the double equals operator, both operands are compared. If they are equal, 
+      it returns true, otherwise, it returns false.
+
+33. Name different commands that are available to check the disk usage.
+
+    df – It is used to find out how much space is left on a disk.
+    du – With this command, you can find out how much disk space the specified files and each subdirectory take up.
+    dfspace – Using this command, you can check the amount of free disk space in MB.
+
+34. Explain how you will open a read-only file in Unix/Shell?
+
+    You can open a read-only file by: vi –R <Filename>
+
+35. $ uptime command used to know how long the system has been running.
+
+36. What do you mean by metacharacters?
+
+    In a data field or program, metacharacters are special characters that provide information about other characters. 
+    In shells, they're called regular expressions.  A character that is neither a letter nor a number is generally considered
+    a metacharacter. Using shell metacharacters, you can group together commands, redirect and pipe input/output, put commands 
+    in the background, reduce the size of file names and path names, etc. You can use them as wildcards to specify a file name 
+    without typing in the file's full name. The most common metacharacters are as follows:
+        Asterisk (*): Use the * to match any character.
+        Question Mark (?): It matches a single character in the filename.
+        Brackets ([…]):  The metacharacters used here match some specified characters.
+        Hyphen (-): When placed within [] (brackets), the - metacharacter matches a specified range.
+
+37. Write the difference between $$ and $!
+
+    -> You can use $$ to get the process id of the current process. However, $! displays the process id for a background 
+       process that recently went away.
+
+38. Write difference between grep and find command.
+
+    Grep command: This command facilitates searching and displaying content based on regular expressions specified by the user.
+    Using the Grep command, one can search in a file for patterns.
+        eg: grep “apple” file1.txt                     //Displays all the lines with the word “apple” in the file1
+            grep “apple” file1.txt  file2.txt          //Scan multiple documents and search the word “apple” in both files.
+     Find command: The FIND command searches for files and folders based on their size, modification time, and access time.
+     You can use this command to search files and directories. 
+        eg: find –type  f                      // Command will find all the files
+            find  –type  d                    //Command will find all the directories
+            find .  –name file1.txt       //Command will find file1.txt in the current directory
+
+39. 
 
 
         
