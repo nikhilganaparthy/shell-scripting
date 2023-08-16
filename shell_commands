@@ -1,1 +1,20 @@
  /proc/PID/fd  -> all file descriptors are visible here.
+ cd /proc/     -> ls -> lists all process id's
+ $ man bash    -> to see all the internal commands.
+ $env          -> print a list of these all env variables that are part of the operating system.
+"export key=value" -> define var for current and all subshells. the variable will be available even after exiting from the current shell.
+$alias         -> to see the list of all current aliases
+$alias short_name='custom command' -> $short_name -> gets info about the manual of useradd command.
+$unalias short_name  -> to cancel the alias.
+/etc/profile   -> is a generic startup file that starts for every login shell, where login shell is a shell is opened when a user logging in.
+/etc/bashrc    -> is a generic startup file that is started when opening a subshell. on execution of every command a subshell is created.
+cd /etc/profile.d/ -> shows all the packages and files we installed.
+“.bashrc"       -> is this user specific bashrc which conatins ALIAS.
+".profile"      -> is a user specific profile containing settings that should be executed when user is logging in.
+“.bash_logout”  -> is a file which can be used to clean up things when users are logging out.
+
+
+
+
+
+
