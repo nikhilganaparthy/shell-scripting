@@ -12,6 +12,9 @@ cd /etc/profile.d/ -> shows all the packages and files we installed.
 “.bashrc"       -> is this user specific bashrc which conatins ALIAS.
 ".profile"      -> is a user specific profile containing settings that should be executed when user is logging in.
 “.bash_logout”  -> is a file which can be used to clean up things when users are logging out.
+$ cat /etc/shells  -> to see available shells in ur system.
+$ sudo chsh -s {shell-name} {username} -> root user can change login shell for any account.
+
 
 
 
