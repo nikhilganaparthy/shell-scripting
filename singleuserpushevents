@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# GitLab API endpoint and access token
+GITLAB_API_URL="https://gitlab.example.com/api/v4"
+PRIVATE_TOKEN="your_private_token_here"
+
+# Calculate start date for the last 3 months
+start_date=$(date -d "-3 months" +%Y-%m-%dT%H:%M:%SZ)
+
+# Function to fetch push events for a specific project
+fetch_push_events() {
+    project_id=$1
+    events_url="${GITLAB_API_URL}/projects/${project_id}/events?after=${start_date}&action=push"
+    curl -s --header "PRIVATE-TOKEN: ${PRIVATE_TOKEN}" "${events_url}"
+}
+
+# Function to fetch all projects
+fetch_all_projects() {
+    projects_url="${GITLAB_API_URL}/projects"
+    curl -s --header "PRIVATE-TOKEN: ${PRIVATE_TOKEN}" "${projects_url}"
+}
+
+# Fetch all projects
+projects=$(fetch_all_projects)
+
+# Select the first project for testing
+project=$(echo "${projects}" | jq -r '.[0] | @base64')
+
+# Extract project details
+project_id=$(echo "${project}" | base64 --decode | jq -r '.id')
+project_name=$(echo "${project}" | base64 --decode | jq -r '.name_with_namespace')
+
+echo "Testing with project: ${project_name}"
+
+# Fetch push events for the selected project
+push_events=$(fetch_push_events "${project_id}")
+
+# Extract unique developers and their IDs
+developers=$(echo "${push_events}" | jq -r '[.[] | .author.username as $username | .author.id as $id | {username: $username, id: $id}] | unique_by(.id) | .[]')
+
+# Count the number of developers
+developer_count=$(echo "${developers}" | jq -s 'length')
+
+echo "Total developers who performed push events: ${developer_count}"
+
+# Display developers and their IDs
+echo "${developers}"
