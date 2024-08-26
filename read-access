@@ -6,19 +6,34 @@ PERSONAL_ACCESS_TOKEN="your_personal_access_token"
 USER_ID="target_user_id"
 ACCESS_LEVEL="20" # 20 = Reporter (read-only access)
 
-# Get all projects in GitLab
-projects=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_API_URL/projects?membership=true&per_page=100" | jq -r '.[].id')
+# Pagination variables
+page=1
+per_page=100 # Number of projects per page
 
-# Iterate over each project and add the user as a Reporter
-for project_id in $projects; do
-  response=$(curl --request POST --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" --header "Content-Type: application/json" \
-  --data "{\"user_id\": $USER_ID, \"access_level\": $ACCESS_LEVEL}" \
-  "$GITLAB_API_URL/projects/$project_id/members")
-  
-  # Check if the user was added successfully
-  if echo "$response" | grep -q "created_at"; then
-    echo "User $USER_ID added as Reporter to project $project_id."
-  else
-    echo "Failed to add user $USER_ID to project $project_id. Response: $response"
+# Loop to get all projects with pagination
+while true; do
+  # Fetch projects for the current page
+  projects=$(curl --silent --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_API_URL/projects?membership=true&per_page=$per_page&page=$page" | jq -r '.[].id')
+
+  # Break loop if no more projects are found
+  if [ -z "$projects" ]; then
+    break
   fi
+
+  # Iterate over each project and add the user as a Reporter
+  for project_id in $projects; do
+    response=$(curl --silent --request POST --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" --header "Content-Type: application/json" \
+    --data "{\"user_id\": $USER_ID, \"access_level\": $ACCESS_LEVEL}" \
+    "$GITLAB_API_URL/projects/$project_id/members")
+    
+    # Check if the user was added successfully
+    if echo "$response" | grep -q "created_at"; then
+      echo "User $USER_ID added as Reporter to project $project_id."
+    else
+      echo "Failed to add user $USER_ID to project $project_id. Response: $response"
+    fi
+  done
+
+  # Increment page number for the next iteration
+  page=$((page + 1))
 done
